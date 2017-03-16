@@ -6,6 +6,12 @@ function onTabClick(selected, onClick, originalKey) {
 
 export default class Tab extends PureComponent {
   shouldComponentUpdate(nextProps) {
+    let should = this.props.children !== nextProps.children ||
+      this.props.selected !== nextProps.selected ||
+      this.props.classNames !== nextProps.classNames
+    if (should) {
+      // console.log("should Tab update?", should)
+    }
     return this.props.children !== nextProps.children ||
       this.props.selected !== nextProps.selected ||
       this.props.classNames !== nextProps.classNames;

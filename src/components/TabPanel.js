@@ -1,7 +1,14 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 
-export default class TabPanel extends PureComponent {
+export default class TabPanel extends Component {
   shouldComponentUpdate(nextProps) {
+    let should = this.props.getContent !== nextProps.getContent ||
+      this.props.children !== nextProps.children ||
+      this.props.classNames !== nextProps.classNames ||
+      this.props.selected !== nextProps.selected;
+    if (should) {
+      // console.log("should panel update?", should)
+    }
     return this.props.getContent !== nextProps.getContent ||
       this.props.children !== nextProps.children ||
       this.props.classNames !== nextProps.classNames ||

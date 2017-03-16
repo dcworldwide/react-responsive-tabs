@@ -10,7 +10,7 @@ import InkBar from './components/InkBar';
 const tabPrefix = 'tab-';
 const panelPrefix = 'panel-';
 
-export default class Tabs extends PureComponent {
+export default class Tabs extends Component {
   constructor(props) {
     super(props);
 
@@ -37,6 +37,12 @@ export default class Tabs extends PureComponent {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    let should = this.props.items !== nextProps.items ||
+      nextState.blockWidth !== this.state.blockWidth ||
+      nextState.selectedTabKey !== this.state.selectedTabKey;
+    if (should) {
+      // console.log("should tab root update?", should)
+    }
     return this.props.items !== nextProps.items ||
       nextState.blockWidth !== this.state.blockWidth ||
       nextState.selectedTabKey !== this.state.selectedTabKey;
